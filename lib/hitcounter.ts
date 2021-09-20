@@ -16,7 +16,7 @@ export class HitCounter extends cdk.Construct {
         const dynamo = new dynamoDB.Table(this, 'Hits', {
             partitionKey: { name: 'path', type: dynamoDB.AttributeType.STRING }
         })
-
+        console.log('table created>', dynamo.tableName)
         this.handler = new lambda.Function(this, 'HitCounterHandler', {
             runtime: lambda.Runtime.NODEJS_14_X,
             code: lambda.Code.fromAsset('lambdas'),
